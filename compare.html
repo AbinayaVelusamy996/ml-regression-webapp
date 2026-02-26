@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #1f2933;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        /* CONTENT */
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f2933;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr.best {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+
+        .best-model {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+
+        img {
+            display: block;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div><b>📈 Model Comparison</b></div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/predict">Predict</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Regression Model Performance</h2>
+
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>MAE</th>
+            <th>MSE</th>
+            <th>RMSE</th>
+            <th>R²</th>
+        </tr>
+
+        {% for model, values in metrics.items() %}
+        <tr class="{% if model == best_model %}best{% endif %}">
+            <td>{{ model }}</td>
+            <td>{{ values.MAE | round(2) }}</td>
+            <td>{{ values.MSE | round(2) }}</td>
+            <td>{{ values.RMSE | round(2) }}</td>
+            <td>{{ values.R2 | round(3) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="best-model">
+        ✅ Best Performing Model: <b>{{ best_model }}</b>
+    </div>
+
+    <img src="{{ url_for('static', filename='model_comparison.png') }}" width="500">
+</div>
+
+</body>
+</html>

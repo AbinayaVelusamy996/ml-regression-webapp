@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Regression Web App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #1f2933;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1f2933;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 30px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            color: gray;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>🏠 ML House Price Predictor</b></div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/predict">Predict</a>
+        <a href="/compare">Compare Models</a>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h1>ML Regression Web Application</h1>
+
+    <p>
+        This application predicts <b>house prices</b> using multiple
+        <b>Machine Learning regression models</b> and compares their performance.
+    </p>
+
+    <h2>📊 Dataset Information</h2>
+    <ul>
+        <li><b>Dataset Type:</b> Numeric House Price Dataset</li>
+        <li><b>Total Features:</b> 7</li>
+        <li><b>Target Variable:</b> House_Price</li>
+    </ul>
+
+    <h2>🏗 Features Used</h2>
+    <ul>
+        <li>Square_Footage</li>
+        <li>Num_Bedrooms</li>
+        <li>Num_Bathrooms</li>
+        <li>Year_Built</li>
+        <li>Lot_Size</li>
+        <li>Garage_Size</li>
+        <li>Neighborhood_Quality</li>
+    </ul>
+
+    <h2>🤖 Regression Models</h2>
+    <ul>
+        <li>Linear Regression</li>
+        <li>Ridge Regression</li>
+        <li>Lasso Regression</li>
+        <li>Polynomial Regression</li>
+        <li>ElasticNet Regression</li>
+    </ul>
+
+    <div class="footer-note">
+        Built using Flask, Scikit-learn & Python
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #d9e2ec);
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f2933;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        small {
+            color: #666;
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #e6fffa;
+            border-left: 5px solid #2ecc71;
+            text-align: center;
+            font-size: 18px;
+            color: #1b5e20;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🏠 House Price Prediction</h2>
+
+    <form method="post">
+
+        <label>Select Model</label>
+        <select name="model" required>
+            {% for m in models %}
+            <option value="{{ m }}">{{ m }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Square Footage</label>
+        <input type="number" name="Square_Footage" min="500" max="10000" required>
+        <small>Range: 500 – 10,000 sq.ft</small>
+
+        <label>Number of Bedrooms</label>
+        <input type="number" name="Num_Bedrooms" min="1" max="10" required>
+        <small>Range: 1 – 10</small>
+
+        <label>Number of Bathrooms</label>
+        <input type="number" name="Num_Bathrooms" min="1" max="10" required>
+        <small>Range: 1 – 10</small>
+
+        <label>Year Built</label>
+        <input type="number" name="Year_Built" min="1950" max="2025" required>
+        <small>Range: 1950 – 2025</small>
+
+        <label>Lot Size</label>
+        <input type="number" name="Lot_Size" min="500" max="20000" required>
+        <small>Range: 500 – 20,000</small>
+
+        <label>Garage Size</label>
+        <input type="number" name="Garage_Size" min="0" max="5" required>
+        <small>Range: 0 – 5</small>
+
+        <label>Neighborhood Quality</label>
+        <input type="number" name="Neighborhood_Quality" min="1" max="10" required>
+        <small>Range: 1 (Poor) – 10 (Excellent)</small>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        💰 Predicted House Price: ₹ {{ prediction | round(2) }}
+    </div>
+    {% endif %}
+
+    <a class="back" href="/">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>
